@@ -2,6 +2,28 @@
 // 코딩 MBTI - Main Application
 // ========================================
 
+// Google Apps Script API URL
+const API_URL = 'https://script.google.com/macros/s/AKfycbxlgWOE2PP5xMNagvhgPq1YnteIuGxS_dkuZhzOGdnYil9WCiiHfLqQe-zX8nK0nT6N/exec';
+
+// Google Sheet에 데이터 저장
+async function saveTestResult(data) {
+    try {
+        const response = await fetch(API_URL, {
+            method: 'POST',
+            mode: 'no-cors', // CORS 우회
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        });
+        console.log('데이터 저장 완료!');
+        return true;
+    } catch (error) {
+        console.error('데이터 저장 실패:', error);
+        return false;
+    }
+}
+
 // 질문 데이터
 const questions = [
     // 축 1: T(생각형) vs P(실행형) - Q1~Q4
@@ -633,6 +655,31 @@ function showResult(mbtiCode, scores) {
         tag.textContent = field;
         recommendationContainer.appendChild(tag);
     });
+
+    // Google Sheet에 결과 저장
+    const testData = {
+        name: userData.name,
+        age: userData.age,
+        q1: questions[0].options[answers[0]]?.label || '',
+        q2: questions[1].options[answers[1]]?.label || '',
+        q3: questions[2].options[answers[2]]?.label || '',
+        q4: questions[3].options[answers[3]]?.label || '',
+        q5: questions[4].options[answers[4]]?.label || '',
+        q6: questions[5].options[answers[5]]?.label || '',
+        q7: questions[6].options[answers[6]]?.label || '',
+        q8: questions[7].options[answers[7]]?.label || '',
+        q9: questions[8].options[answers[8]]?.label || '',
+        q10: questions[9].options[answers[9]]?.label || '',
+        q11: questions[10].options[answers[10]]?.label || '',
+        q12: questions[11].options[answers[11]]?.label || '',
+        q13: questions[12].options[answers[12]]?.label || '',
+        q14: questions[13].options[answers[13]]?.label || '',
+        q15: questions[14].options[answers[14]]?.label || '',
+        q16: questions[15].options[answers[15]]?.label || '',
+        resultType: mbtiCode,
+        nickname: typeData.nickname
+    };
+    saveTestResult(testData);
 
     showScreen('result');
 }
