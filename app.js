@@ -3,7 +3,7 @@
 // ========================================
 
 // Google Apps Script API URL
-const API_URL = 'https://script.google.com/macros/s/AKfycbxlgWOE2PP5xMNagvhgPq1YnteIuGxS_dkuZhzOGdnYil9WCiiHfLqQe-zX8nK0nT6N/exec';
+const API_URL = 'https://script.google.com/macros/s/AKfycbwsxE6Zue186hBkLmwhlKaBw1Kn_jPYhZLtE59zz1-ciMJWG2pZmpS0nRLc_crwIElW/exec';
 
 // Google Sheet에 데이터 저장
 async function saveTestResult(data) {
