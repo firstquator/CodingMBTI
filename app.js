@@ -716,7 +716,35 @@ document.getElementById('btn-share').addEventListener('click', function() {
     }
 });
 
+// 테마 전환
+function initTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    } else if (!prefersDark) {
+        document.documentElement.setAttribute('data-theme', 'light');
+    }
+}
+
+function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+    if (newTheme === 'dark') {
+        document.documentElement.removeAttribute('data-theme');
+    } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+    }
+
+    localStorage.setItem('theme', newTheme);
+}
+
+document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+
 // 초기화
 document.addEventListener('DOMContentLoaded', function() {
+    initTheme();
     showScreen('intro');
 });
