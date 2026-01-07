@@ -1,0 +1,202 @@
+/* ========================================
+   D·LAB CODING MBTI - Responsive Styles
+   Media Queries for all screen sizes
+   ======================================== */
+
+/* ========================================
+   Tablet (480px+)
+   ======================================== */
+@media (min-width: 480px) {
+    html {
+        font-size: 17px;
+    }
+
+    .screen {
+        padding: var(--space-xl);
+    }
+
+    .logo-image {
+        max-width: 260px;
+    }
+
+    .main-title {
+        font-size: 2.5rem;
+    }
+
+    .logo-icon {
+        font-size: 1.8rem;
+        padding: var(--space-lg) var(--space-xl);
+    }
+
+    .question-text {
+        font-size: 1.5rem;
+    }
+
+    .option-btn {
+        padding: var(--space-lg) var(--space-xl);
+    }
+
+    .result-type {
+        font-size: 4.5rem;
+    }
+
+    .result-actions {
+        flex-direction: row;
+    }
+
+    .result-actions .btn {
+        flex: 1;
+    }
+}
+
+/* ========================================
+   Small Desktop (768px+)
+   ======================================== */
+@media (min-width: 768px) {
+    html {
+        font-size: 18px;
+    }
+
+    .screen {
+        padding: var(--space-2xl);
+    }
+
+    .container {
+        max-width: 540px;
+    }
+
+    #result-screen .container {
+        max-width: 580px;
+    }
+
+    .logo-image {
+        max-width: 280px;
+    }
+
+    .main-title {
+        font-size: 2.75rem;
+    }
+
+    .question-text {
+        font-size: 1.6rem;
+    }
+
+    .type-explanation {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .score-bars {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-xl);
+    }
+}
+
+/* ========================================
+   Large Desktop (1024px+)
+   ======================================== */
+@media (min-width: 1024px) {
+    .container {
+        max-width: 580px;
+    }
+
+    #result-screen .container {
+        max-width: 680px;
+    }
+
+    .result-card {
+        padding: var(--space-xl);
+    }
+
+    .option-btn:hover {
+        transform: translateX(8px);
+    }
+}
+
+/* ========================================
+   Extra Small (374px-)
+   ======================================== */
+@media (max-width: 374px) {
+    html {
+        font-size: 14px;
+    }
+
+    .screen {
+        padding: var(--space-md);
+    }
+
+    .logo-image {
+        max-width: 180px;
+    }
+
+    .logo-icon {
+        font-size: 1.2rem;
+        padding: var(--space-sm) var(--space-md);
+    }
+
+    .main-title {
+        font-size: 1.75rem;
+    }
+
+    .input-group input {
+        padding: var(--space-sm) var(--space-md);
+    }
+
+    .btn {
+        padding: var(--space-sm) var(--space-lg);
+    }
+
+    .question-text {
+        font-size: 1.15rem;
+    }
+
+    .option-btn {
+        padding: var(--space-md);
+    }
+
+    .option-text {
+        font-size: 0.9rem;
+    }
+
+    .result-type {
+        font-size: 3rem;
+        letter-spacing: 4px;
+    }
+
+    .result-nickname {
+        font-size: 1.25rem;
+    }
+}
+
+/* ========================================
+   Short Screens (667px-)
+   ======================================== */
+@media (max-height: 667px) {
+    .intro-content {
+        padding: var(--space-sm) 0;
+    }
+
+    .logo-area {
+        margin-bottom: var(--space-md);
+    }
+
+    .logo-image {
+        max-width: 160px;
+    }
+
+    .description {
+        margin-bottom: var(--space-lg);
+    }
+
+    .input-group {
+        margin-bottom: var(--space-md);
+    }
+
+    .question-content {
+        padding: var(--space-sm) 0;
+    }
+
+    .options-container {
+        gap: var(--space-sm);
+    }
+}

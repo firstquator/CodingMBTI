@@ -638,10 +638,10 @@ function showResult(mbtiCode, scores) {
     scoreBarsContainer.innerHTML = '';
 
     const scorePairs = [
-        { left: 'T', right: 'P', leftLabel: '생각형', rightLabel: '실행형' },
-        { left: 'S', right: 'F', leftLabel: '계획형', rightLabel: '자유형' },
-        { left: 'I', right: 'C', leftLabel: '혼자형', rightLabel: '함께형' },
-        { left: 'E', right: 'N', leftLabel: '안정형', rightLabel: '신기술형' }
+        { left: 'T', right: 'P', leftLabel: '생각형', rightLabel: '실행형', axis: 'tp' },
+        { left: 'S', right: 'F', leftLabel: '계획형', rightLabel: '자유형', axis: 'sf' },
+        { left: 'I', right: 'C', leftLabel: '혼자형', rightLabel: '함께형', axis: 'ic' },
+        { left: 'E', right: 'N', leftLabel: '안정형', rightLabel: '신기술형', axis: 'en' }
     ];
 
     scorePairs.forEach(pair => {
@@ -650,6 +650,7 @@ function showResult(mbtiCode, scores) {
 
         const scoreItem = document.createElement('div');
         scoreItem.className = 'score-item';
+        scoreItem.setAttribute('data-axis', pair.axis);
         scoreItem.innerHTML = `
             <div class="score-labels">
                 <span class="score-label-left">${pair.leftLabel} (${pair.left})</span>

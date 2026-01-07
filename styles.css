@@ -931,12 +931,10 @@ body::before {
 }
 
 .score-label-left {
-    color: var(--primary-color);
     font-weight: 600;
 }
 
 .score-label-right {
-    color: var(--secondary-color);
     font-weight: 600;
 }
 
@@ -953,9 +951,36 @@ body::before {
     top: 0;
     left: 0;
     height: 100%;
-    background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
     border-radius: var(--radius-full);
     transition: width 1s ease;
+}
+
+/* 축별 색상 - T/P (생각형/실행형) - 오렌지 */
+.score-item[data-axis="tp"] .score-label-left { color: #FF4713; }
+.score-item[data-axis="tp"] .score-label-right { color: #FF8A65; }
+.score-item[data-axis="tp"] .score-bar-fill {
+    background: linear-gradient(90deg, #FF4713, #FF6B42);
+}
+
+/* 축별 색상 - S/F (계획형/자유형) - 시안 */
+.score-item[data-axis="sf"] .score-label-left { color: #00BCD4; }
+.score-item[data-axis="sf"] .score-label-right { color: #4DD0E1; }
+.score-item[data-axis="sf"] .score-bar-fill {
+    background: linear-gradient(90deg, #00BCD4, #26C6DA);
+}
+
+/* 축별 색상 - I/C (혼자형/함께형) - 퍼플 */
+.score-item[data-axis="ic"] .score-label-left { color: #AB47BC; }
+.score-item[data-axis="ic"] .score-label-right { color: #CE93D8; }
+.score-item[data-axis="ic"] .score-bar-fill {
+    background: linear-gradient(90deg, #AB47BC, #BA68C8);
+}
+
+/* 축별 색상 - E/N (안정형/신기술형) - 그린 */
+.score-item[data-axis="en"] .score-label-left { color: #66BB6A; }
+.score-item[data-axis="en"] .score-label-right { color: #A5D6A7; }
+.score-item[data-axis="en"] .score-bar-fill {
+    background: linear-gradient(90deg, #66BB6A, #81C784);
 }
 
 .score-percentage {
