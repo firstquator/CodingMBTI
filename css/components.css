@@ -221,7 +221,7 @@
 }
 
 .logo-image {
-    max-width: 220px;
+    max-width: 300px;
     width: 100%;
     height: auto;
     margin-bottom: var(--space-md);
@@ -438,5 +438,74 @@
     40% {
         transform: scale(1.2);
         opacity: 1;
+    }
+}
+
+/* ========================================
+   Tag Tooltip
+   ======================================== */
+.tag-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.tag {
+    cursor: pointer;
+}
+
+.tag-tooltip {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%) scale(0.9);
+    background: var(--bg-card);
+    color: var(--text-primary);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-md);
+    font-size: 0.8rem;
+    font-weight: 500;
+    white-space: nowrap;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-color);
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition-fast);
+    z-index: 100;
+    pointer-events: none;
+}
+
+.tag-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: var(--bg-card);
+}
+
+.tag-tooltip::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 7px solid transparent;
+    border-top-color: var(--border-color);
+}
+
+/* 활성화 상태 */
+.tag-wrapper.active .tag-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) scale(1);
+}
+
+/* 호버 지원 디바이스에서는 호버로도 표시 */
+@media (hover: hover) {
+    .tag-wrapper:hover .tag-tooltip {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) scale(1);
     }
 }

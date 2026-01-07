@@ -4,7 +4,7 @@
 // ========================================
 
 import questions from '../data/questions.js';
-import { mbtiTypes, typeDescriptions } from '../data/types.js';
+import { mbtiTypes, typeDescriptions, fieldDescriptions } from '../data/types.js';
 import { saveTestResult } from '../utils/api.js';
 
 /**
@@ -138,7 +138,7 @@ function renderTypeExplanation(typeData) {
 }
 
 /**
- * 추천 분야 렌더링
+ * 추천 분야 렌더링 (툴팁 포함)
  * @param {Object} typeData - 유형 데이터
  */
 function renderRecommendations(typeData) {
@@ -146,10 +146,40 @@ function renderRecommendations(typeData) {
     recommendationContainer.innerHTML = '';
 
     typeData.fields.forEach(field => {
+        const tagWrapper = document.createElement('div');
+        tagWrapper.className = 'tag-wrapper';
+
         const tag = document.createElement('span');
         tag.className = 'tag';
         tag.textContent = field;
-        recommendationContainer.appendChild(tag);
+
+        const tooltip = document.createElement('div');
+        tooltip.className = 'tag-tooltip';
+        tooltip.textContent = fieldDescriptions[field] || field;
+
+        tagWrapper.appendChild(tag);
+        tagWrapper.appendChild(tooltip);
+
+        // 클릭/터치로 툴팁 토글
+        tag.addEventListener('click', (e) => {
+            e.stopPropagation();
+            // 다른 모든 툴팁 닫기
+            document.querySelectorAll('.tag-wrapper.active').forEach(wrapper => {
+                if (wrapper !== tagWrapper) {
+                    wrapper.classList.remove('active');
+                }
+            });
+            tagWrapper.classList.toggle('active');
+        });
+
+        recommendationContainer.appendChild(tagWrapper);
+    });
+
+    // 바깥 클릭시 툴팁 닫기
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.tag-wrapper.active').forEach(wrapper => {
+            wrapper.classList.remove('active');
+        });
     });
 }
 
