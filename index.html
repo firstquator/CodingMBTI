@@ -3,9 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="나는 어떤 스타일로 코딩할까? 코딩 MBTI 테스트로 알아보세요!">
-    <meta name="theme-color" content="#6366f1">
-    <title>코딩 MBTI - 나의 코딩 성향 찾기</title>
+    <meta name="description" content="D·LAB CODING 평택 디랩코딩학원 - 나는 어떤 스타일로 코딩할까? 코딩 MBTI 테스트로 알아보세요!">
+    <meta name="theme-color" content="#FF4713">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="코딩 MBTI - D·LAB CODING">
+    <meta property="og:description" content="나는 어떤 스타일로 코딩할까? 16가지 질문으로 알아보는 나만의 코딩 성향 테스트">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/logo.png">
+
+    <title>코딩 MBTI - D·LAB CODING</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,11 +32,7 @@
         <div class="container">
             <div class="intro-content">
                 <div class="logo-area">
-                    <div class="logo-icon">
-                        <span class="code-bracket">&lt;</span>
-                        <span class="code-text">MBTI</span>
-                        <span class="code-bracket">/&gt;</span>
-                    </div>
+                    <img src="images/logo.png" alt="D·LAB CODING 평택 디랩코딩학원" class="logo-image">
                 </div>
                 <h1 class="main-title">코딩 MBTI</h1>
                 <p class="sub-title">나는 어떤 스타일로 코딩할까?</p>
@@ -60,6 +65,15 @@
     <section id="question-screen" class="screen">
         <div class="container">
             <div class="question-header">
+                <div class="header-top">
+                    <button class="btn-home" id="btn-home" aria-label="처음으로">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                        <span>처음으로</span>
+                    </button>
+                </div>
                 <div class="progress-container">
                     <div class="progress-bar">
                         <div class="progress-fill" id="progress-fill"></div>
@@ -75,10 +89,16 @@
                 </div>
             </div>
             <div class="question-footer">
-                <button class="btn btn-secondary btn-prev" id="btn-prev" disabled>
-                    <span class="btn-arrow">←</span>
-                    이전
-                </button>
+                <div class="question-nav">
+                    <button class="btn btn-secondary btn-prev" id="btn-prev" disabled>
+                        <span class="btn-arrow">←</span>
+                        이전
+                    </button>
+                    <button class="btn btn-primary btn-next" id="btn-next" style="display: none;">
+                        다음
+                        <span class="btn-arrow">→</span>
+                    </button>
+                </div>
             </div>
         </div>
     </section>
@@ -99,7 +119,7 @@
                     </div>
                 </div>
                 <h2 class="loading-title">결과 분석 중...</h2>
-                <p class="loading-text" id="loading-text">당신의 코딩 성향을 분석하고 있어요</p>
+                <p class="loading-text" id="loading-text">D·LAB이 당신의 코딩 성향을 분석하고 있어요</p>
             </div>
         </div>
     </section>

@@ -474,6 +474,7 @@ function renderQuestion() {
     const questionText = document.getElementById('question-text');
     const optionsContainer = document.getElementById('options-container');
     const prevBtn = document.getElementById('btn-prev');
+    const nextBtn = document.getElementById('btn-next');
 
     // 진행률 업데이트
     const progress = ((currentQuestion + 1) / questions.length) * 100;
@@ -505,6 +506,14 @@ function renderQuestion() {
 
     // 이전 버튼 상태
     prevBtn.disabled = currentQuestion === 0;
+
+    // 다음 버튼 상태 - 이미 답변한 질문이면 표시
+    if (answers[currentQuestion] !== undefined) {
+        nextBtn.style.display = 'inline-flex';
+        nextBtn.textContent = currentQuestion < questions.length - 1 ? '다음 →' : '결과 보기 →';
+    } else {
+        nextBtn.style.display = 'none';
+    }
 }
 
 // 옵션 선택
@@ -516,7 +525,12 @@ function selectOption(optionIndex) {
         btn.classList.toggle('selected', idx === optionIndex);
     });
 
-    // 다음 질문으로 (0.3초 딜레이)
+    // 다음 버튼 표시
+    const nextBtn = document.getElementById('btn-next');
+    nextBtn.style.display = 'inline-flex';
+    nextBtn.textContent = currentQuestion < questions.length - 1 ? '다음 →' : '결과 보기 →';
+
+    // 다음 질문으로 (0.4초 딜레이)
     setTimeout(() => {
         if (currentQuestion < questions.length - 1) {
             currentQuestion++;
@@ -524,7 +538,7 @@ function selectOption(optionIndex) {
         } else {
             showLoading();
         }
-    }, 300);
+    }, 400);
 }
 
 // 이전 버튼
@@ -532,6 +546,27 @@ document.getElementById('btn-prev').addEventListener('click', function() {
     if (currentQuestion > 0) {
         currentQuestion--;
         renderQuestion();
+    }
+});
+
+// 다음 버튼
+document.getElementById('btn-next').addEventListener('click', function() {
+    if (currentQuestion < questions.length - 1) {
+        currentQuestion++;
+        renderQuestion();
+    } else {
+        showLoading();
+    }
+});
+
+// 처음으로 버튼
+document.getElementById('btn-home').addEventListener('click', function() {
+    if (confirm('처음으로 돌아가시겠어요?\n진행 중인 테스트가 초기화됩니다.')) {
+        currentQuestion = 0;
+        answers = [];
+        document.getElementById('user-name').value = '';
+        document.getElementById('user-age').value = '';
+        showScreen('intro');
     }
 });
 
