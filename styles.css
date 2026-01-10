@@ -249,14 +249,14 @@ body::before {
 
 /* Logo Area */
 .logo-area {
-    margin-bottom: var(--space-xl);
+    margin-bottom: var(--space-md);
 }
 
 .logo-image {
     max-width: 300px;
     width: 100%;
     height: auto;
-    margin-bottom: var(--space-md);
+    margin-bottom: var(--space-sm);
     filter: brightness(0) invert(1) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
     transition: var(--transition-normal);
 }
